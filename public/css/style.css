@@ -1,0 +1,60 @@
+body {
+    font-family: "Lora", serif;
+    background-color: #f9fcff;
+    color: #1c2022;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dark-mode {
+    background-color: #1c2022;
+    color: #f9fcff;
+}
+
+.center-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.project-desc {
+    max-width: 70vw;
+    margin: 1rem 0 2rem 0;
+    font-size: 1.1rem;
+    color: #555;
+    text-align: justify;
+}
+
+.dark-mode .project-desc {
+    color: #ccc;
+}
+
+.project-desc .text-soft-accent {
+    font-weight: 500;
+    color: #444;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.15);
+}
+
+.project-desc .text-soft-strong {
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.dark-mode .project-desc .text-soft-accent {
+    color: #ddd;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dark-mode .project-desc .text-soft-strong {
+    color: #f1f1f1;
+}
+
+.project-version {
+    color: #ccc;
+}
+
+.dark-mode .project-version {
+    color: #555;
+}
