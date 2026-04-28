@@ -14,7 +14,7 @@ exports.receiveMessage = async (req, res) => {
             return res.status(500).json({
                 status: 500,
                 message: "Email and message are required!",
-                audit: generateApiAudit()
+                metadata: generateMetadata()
             });
         }
 
@@ -45,7 +45,7 @@ exports.receiveMessage = async (req, res) => {
         return res.status(200).json({
             status: 200,
             message: "Message sent successfully.",
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
 
     } catch (error) {
@@ -53,7 +53,7 @@ exports.receiveMessage = async (req, res) => {
         return res.status(500).json({
             status: 500,
             message: error.message,
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
     }
 }
@@ -67,7 +67,7 @@ exports.sendMessage = async (req, res) => {
             return res.status(500).json({
                 status: 500,
                 message: "Email and message are required!",
-                audit: generateApiAudit()
+                metadata: generateMetadata()
             });
         }
 
@@ -92,7 +92,7 @@ exports.sendMessage = async (req, res) => {
         return res.status(200).json({
             status: 200,
             message: "Message sent successfully.",
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
 
     } catch (error) {
@@ -100,7 +100,7 @@ exports.sendMessage = async (req, res) => {
         return res.status(500).json({
             status: 500,
             message: error.message,
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
     }
 }
@@ -114,7 +114,7 @@ exports.sendOTP = async (req, res) => {
             return res.status(500).json({
                 status: 500,
                 message: "Email is required!",
-                audit: generateApiAudit()
+                metadata: generateMetadata()
             });
         }
 
@@ -161,7 +161,7 @@ exports.sendOTP = async (req, res) => {
                 otp,
                 expireAt
             },
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
 
     } catch (error) {
@@ -169,13 +169,13 @@ exports.sendOTP = async (req, res) => {
         return res.status(500).json({
             status: 500,
             message: error.message,
-            audit: generateApiAudit()
+            metadata: generateMetadata()
         });
     }
 }
 
 // metadata
-function generateApiAudit() {
+function generateMetadata() {
     return {
         requestId: CommonHandler.getSyskey(),
         timestamp: DateTimeHandler.getMyanmarDateTime(),

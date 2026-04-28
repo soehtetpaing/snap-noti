@@ -1,17 +1,18 @@
 const swaggerJsdoc = require("swagger-jsdoc");
 
 const apiUrl = process.env.API_URL;
+const version = process.env.VERSION;
 
 const options = {
   definition: {
     openapi: "3.0.0",
     info: {
       title: "Snap Noti",
-      version: "1.0.0",
+      version: version,
       description: "Snap Noti REST APIs documentation",
       contact: {
         name: "API Support",
-        url: "https://soehtetpaing.github.io/portfolio",
+        url: "https://port4olio.pages.dev",
         email: "developer.geniusiq@gmail.com"
       }
     },
