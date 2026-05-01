@@ -35,9 +35,11 @@ app.use(express.urlencoded({ extended: true })); // application/x-www-form-urlen
 app.use(express.static(path.join(__dirname, "public")));
 
 // routers
+const authRoutes = require("./src/routes/auth.routes");
 const emailRoutes = require("./src/routes/email.routes");
 
 // routes
+app.use("/auth", authRoutes);
 app.use("/email", emailRoutes);
 
 // open API swagger UI setup

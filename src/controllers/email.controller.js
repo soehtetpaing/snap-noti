@@ -3,7 +3,8 @@ const { app } = require("../configs/app.config");
 const crypto = require("crypto");
 const { AuthHandler, CommonHandler, DateTimeHandler } = require("genius-utils");
 
-const secretKey = app.secretKey || process.env.SECRET_KEY;
+const APP_VERSION = process.env.VERSION || app.version;
+const secretKey = process.env.SECRET_KEY || app.secretKey;
 
 exports.receiveMessage = async (req, res) => {
     const requestBody = emailRequest(req.body);
@@ -179,7 +180,7 @@ function generateMetadata() {
     return {
         requestId: CommonHandler.getSyskey(),
         timestamp: DateTimeHandler.getMyanmarDateTime(),
-        version: `SN-V${app.version}`
+        version: APP_VERSION
     }
 }
 
@@ -217,7 +218,7 @@ function getOwnerCredencial(projectcode = "") {
     let owner = "";
 
     switch (projectcode) {
-        case AuthHandler.decrypt("IUKZtaa0u5Dp8Q6epH/9bAADNQiPLkDn+E2M01ON4X3d1tVXQ4JstM8lsjtyH0zO", secretKey):
+        case AuthHandler.decrypt("GJLv9QuPr9ye4mlGBqiTzuXDbRcNY2VS6mJalTwnRG8=", secretKey):
             encrypted = app.email || process.EMAIL;
             owner = AuthHandler.decrypt(encrypted, secretKey);
             break;
@@ -236,7 +237,7 @@ function getPasswordCredencial(projectcode = "") {
     let password = "";
 
     switch (projectcode) {
-        case AuthHandler.decrypt("IUKZtaa0u5Dp8Q6epH/9bAADNQiPLkDn+E2M01ON4X3d1tVXQ4JstM8lsjtyH0zO", secretKey):
+        case AuthHandler.decrypt("GJLv9QuPr9ye4mlGBqiTzuXDbRcNY2VS6mJalTwnRG8=", secretKey):
             encrypted = app.apppassword || process.env.APP_PASSWORD;
             password = AuthHandler.decrypt(encrypted, secretKey);
             break;
@@ -255,7 +256,7 @@ function prepareAutoReply(name, projectcode) {
     let reply = "";
 
     switch (projectcode) {
-        case AuthHandler.decrypt("IUKZtaa0u5Dp8Q6epH/9bAADNQiPLkDn+E2M01ON4X3d1tVXQ4JstM8lsjtyH0zO", secretKey):
+        case AuthHandler.decrypt("GJLv9QuPr9ye4mlGBqiTzuXDbRcNY2VS6mJalTwnRG8=", secretKey):
             reply = "Hi " + name + ","
                 + "\n"
                 + "Thank you for your message. I received it and will reply soon."

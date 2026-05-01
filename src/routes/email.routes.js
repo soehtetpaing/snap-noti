@@ -1,6 +1,12 @@
 /**
  * @swagger
  * components:
+ *  securitySchemes:
+ *   bearerAuth:
+ *    type: http
+ *    scheme: bearer
+ *    bearerFormat: JWT
+ *    description: Enter JWT token as "Bearer <token>"
  *  schemas:
  *   emailReceiveRequest:
  *    type: object
@@ -27,7 +33,7 @@
  *     projectcode:
  *      type: string
  *      description: Customize Reply Label
- *      example: S-N-BOT-m7ue7MMi1zu
+ *      example: S-N-BOT-1020
  *   emailSendRequest:
  *    type: object
  *    required:
@@ -49,7 +55,7 @@
  *     projectcode:
  *      type: string
  *      description: Customize Reply Label
- *      example: S-N-BOT-m7ue7MMi1zu
+ *      example: S-N-BOT-1020
  *   otpSendRequest:
  *    type: object
  *    required:
@@ -66,7 +72,7 @@
  *     projectcode:
  *      type: string
  *      description: Customize Reply Label
- *      example: S-N-BOT-m7ue7MMi1zu
+ *      example: S-N-BOT-1020
  *   baseResponse:
  *    x-internal: true
  *    type: object
@@ -89,6 +95,7 @@
 const express = require("express");
 const router = express.Router();
 const emailController = require("../controllers/email.controller");
+const { checkToken } = require("../middlewares/auth.middleware");
 
 /**
  * @swagger
@@ -96,6 +103,8 @@ const emailController = require("../controllers/email.controller");
  *  post:
  *   summary: Receive Email Message
  *   tags: [Email]
+ *   security:
+ *    - bearerAuth: []
  *   requestBody:
  *     required: true
  *     content:
@@ -117,7 +126,7 @@ const emailController = require("../controllers/email.controller");
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0
+ *             version: 1.0.0
  *    500:
  *     description: Message Receive Failed
  *     content:
@@ -132,9 +141,9 @@ const emailController = require("../controllers/email.controller");
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0
+ *             version: 1.0.0
  */
-router.post("/message/receive", emailController.receiveMessage);
+router.post("/message/receive", checkToken, emailController.receiveMessage);
 
 /**
  * @swagger
@@ -142,6 +151,8 @@ router.post("/message/receive", emailController.receiveMessage);
  *  post:
  *   summary: Send Email Message
  *   tags: [Email]
+ *   security:
+ *    - bearerAuth: []
  *   requestBody:
  *     required: true
  *     content:
@@ -163,7 +174,7 @@ router.post("/message/receive", emailController.receiveMessage);
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0
+ *             version: 1.0.0
  *    500:
  *     description: Message Send Failed
  *     content:
@@ -178,9 +189,9 @@ router.post("/message/receive", emailController.receiveMessage);
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0
+ *             version: 1.0.0
  */
-router.post("/message/send", emailController.sendMessage);
+router.post("/message/send", checkToken, emailController.sendMessage);
 
 /**
  * @swagger
@@ -188,6 +199,8 @@ router.post("/message/send", emailController.sendMessage);
  *  post:
  *   summary: Send OTP 
  *   tags: [Email]
+ *   security:
+ *    - bearerAuth: []
  *   requestBody:
  *     required: true
  *     content:
@@ -215,7 +228,7 @@ router.post("/message/send", emailController.sendMessage);
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0          
+ *             version: 1.0.0          
  *    500:
  *     description: OTP Send Failed
  *     content:
@@ -230,8 +243,8 @@ router.post("/message/send", emailController.sendMessage);
  *            metadata:
  *             requestId: "1905487123456789760"
  *             timestamp: 2026-04-26 05:25:24 PM
- *             version: SN-V1.0.0
+ *             version: 1.0.0
  */
-router.post("/otp/send", emailController.sendOTP);
+router.post("/otp/send", checkToken, emailController.sendOTP);
 
 module.exports = router;

@@ -1,6 +1,6 @@
 const app = {
     name: "Snap Noti",
-    version: "1.0.1",
+    version: "1.0.2",
     apiUrl: "https://snap-noti.onrender.com",
     defaultDomain: "demo",
     secretKey: "$n@pN0t1!",

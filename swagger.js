@@ -16,6 +16,18 @@ const options = {
         email: "developer.geniusiq@gmail.com"
       }
     },
+    components: {
+      securitySchemes: {
+        bearerAuth: {
+          type: 'http',
+          scheme: 'bearer',
+          bearerFormat: 'JWT',
+        },
+      },
+    },
+    security: [{
+      bearerAuth: [],
+    }],
     servers: [
       {
         url: apiUrl,
