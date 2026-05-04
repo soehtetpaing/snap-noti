@@ -11,7 +11,7 @@
  *     id:
  *      type: bigInt
  *      description: Unique Id
- *      example: 244276007891243008
+ *      example: 100314380113154048
  *     username:
  *      type: string
  *      description: User Name
@@ -88,7 +88,7 @@ const authController = require("../controllers/auth.controller");
  *             tokenType: Bearer
  *             expireAt: 15m
  *            metadata:
- *             requestId: "244279955641470976"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.2
  *    500:
@@ -103,7 +103,7 @@ const authController = require("../controllers/auth.controller");
  *            status: 500
  *            message: Failed to generate jwt tokens
  *            metadata:
- *             requestId: "244279955641470976"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.2
  */

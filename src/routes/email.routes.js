@@ -124,7 +124,7 @@ const { checkToken } = require("../middlewares/auth.middleware");
  *            status: 200
  *            message: Message sent successfully
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0
  *    500:
@@ -139,7 +139,7 @@ const { checkToken } = require("../middlewares/auth.middleware");
  *            status: 500
  *            message: Failed to send message
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0
  */
@@ -172,7 +172,7 @@ router.post("/message/receive", checkToken, emailController.receiveMessage);
  *            status: 200
  *            message: Message sent successfully
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0
  *    500:
@@ -187,7 +187,7 @@ router.post("/message/receive", checkToken, emailController.receiveMessage);
  *            status: 500
  *            message: Failed to send message
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0
  */
@@ -226,7 +226,7 @@ router.post("/message/send", checkToken, emailController.sendMessage);
  *             otp: 878794
  *             expireAt: 1777076634125
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0          
  *    500:
@@ -241,7 +241,7 @@ router.post("/message/send", checkToken, emailController.sendMessage);
  *            status: 500
  *            message: Failed to send OTP
  *            metadata:
- *             requestId: "1905487123456789760"
+ *             requestId: "100314380117348352"
  *             timestamp: 2026-04-26 05:25:24 PM
  *             version: 1.0.0
  */
